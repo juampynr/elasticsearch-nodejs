@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1 #{title}
+
+    div(id="search_container")
+        form(id='search_form' method='GET' action='/')
+            div(id="search_box")
+                input(type="text" id="search" name="search" value="#{search_string}")
+                input(type="hidden" id="type" name="type" value="#{search_type}")
+                input(type="submit" value="Search")
+            div(id="facets")
+                span Type:
+                ul
+                    each aggregation in aggregations
+                        li
+                            a(href="" class="facet" data-value="#{aggregation.key}") #{aggregation.key} (#{aggregation.doc_count})
+
+    div(id="total")
+        h2= 'Found ' + total + ' results'
+
+    div(id="hits")
+        each hit in hits
+            h2= hit._source.title
+            div!= hit._source.summary[0]
+

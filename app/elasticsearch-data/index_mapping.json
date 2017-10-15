@@ -1,0 +1,39 @@
+{
+  "elasticsearch_index_draco_elastic": {
+    "mappings": {
+      "elastic": {
+        "properties": {
+          "id": {
+            "type": "keyword",
+            "include_in_all": false
+          },
+          "nid": {
+            "type": "integer"
+          },
+          "summary": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "title": {
+            "type": "text",
+            "boost": 2,
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "type": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}
