@@ -4,6 +4,8 @@ var router = express.Router()
 /**
  * Helper to check if an object's property does not exist or is empty.
  *
+ * @see https://stackoverflow.com/a/28552610/1120652
+ *
  * @param {Object} object
  *   The object whose property will be checked.
  * @param {string} property
@@ -12,15 +14,13 @@ var router = express.Router()
  *   TRUE if the property does not exist or is empty.
  */
 var isEmpty = function (object, property) {
-  if ((object[property] === undefined) || (object[property].length === 0) ||
-    (object[property] === 'undefined')) {
-    return true
-  }
-  return false
+  return ((object[property] === undefined) ||
+    (object[property].length === 0) ||
+    (object[property] === 'undefined'))
 }
 
 /**
- * Performs a query against the Elasticsearch server and renders
+ * Performs a query against Elasticsearch and renders
  * the response.
  *
  * @param {Object} req
@@ -91,6 +91,7 @@ var doSearch = function (req, res) {
   }).then(function (resp) {
     var hits = resp.hits.hits
     var total = resp.hits.total
+    // Render results in a template.
     res.render('index', {
       title: 'Node.js Elasticsearch demo',
       hits: hits,
