@@ -1,15 +1,14 @@
 /**
  * Adds behaviors to toggle facets.
  */
-var Anchors = document.getElementsByClassName('facet');
+const Anchors = document.getElementsByClassName('facet');
 
-for (var i = 0; i < Anchors.length ; i++) {
-  Anchors[i].addEventListener('click',
-    function (event) {
+Anchors.forEach(anchor => {
+  anchor.addEventListener('click', (event) => {
       event.preventDefault();
-      var value = this.getAttribute('data-value');
-      var old_value = document.getElementById('type').getAttribute('value');
-      if ((old_value.length === undefined) || (old_value === '')) {
+      const value = this.getAttribute('data-value');
+      const oldValue = document.getElementById('type').getAttribute('value');
+      if (!oldValue || oldValue.length === 0) {
         document.getElementById('type').setAttribute('value', value);
       }
       else {
@@ -18,4 +17,4 @@ for (var i = 0; i < Anchors.length ; i++) {
       document.getElementById("search_form").submit();
     },
     false);
-}
+});

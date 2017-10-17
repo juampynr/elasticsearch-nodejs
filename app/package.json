@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodejs ./bin/www"
+    "start": "nodejs ./bin/www",
+    "test": "npm run lint",
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "lint:fix": "./node_modules/.bin/eslint **/*.js --fix"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
@@ -16,5 +19,12 @@
     "morgan": "~1.0.0",
     "nodemon": "^1.12.0",
     "static-favicon": "~1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0"
   }
 }
