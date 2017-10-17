@@ -24,4 +24,4 @@ boots:
 elasticsearch_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 ```
 
-Elasticsearch has a fix for this documented at https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html.
+Elasticsearch explains how to fix this at https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html.
