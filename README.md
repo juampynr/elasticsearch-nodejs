@@ -1,24 +1,32 @@
 # Elasticsearch Node.js demo
 
+Implements a search form that queries an Elasticsearch index using Node.js.
+
 ## Demo
+
+### Staring the demo
 
 This repository includes a Docker Compose file to reproduce the environment locally.
 
-Run the following commands to start and create the index with sample data:
+Execute the following commands to start and create the index with sample data:
 
 ```bash
 docker-compose up
-# Wait until the elasticsearch container says "started". Then import data
-# into the index with the following command:
+# Wait until the elasticsearch container says "started". Then open a new temrinal and import
+# data into the index with the following command:
 docker exec elasticsearchnodejs_web_1 /usr/src/app/elasticsearch-data/load-data.sh
 ```
 
-Then, open http://localhost:8080 in a browser to see the search page.
+Finally, open http://localhost:3000 in a browser to see the search page.
+
+### Stopping the demo
+
+Open the terminal where you executed `docker-compose up` and press Ctrl + c, which will
+stop the containers. 
 
 ## Troubleshooting
 
-Sometimes I have seen the following error when the Elasticsearch container
-boots:
+If you see the following error in the output after executing `docker-compose up`:
 
 ```
 elasticsearch_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
