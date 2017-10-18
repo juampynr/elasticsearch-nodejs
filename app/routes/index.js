@@ -70,8 +70,21 @@ const doSearch = (req, res) => {
 
   // Perform the search request.
   client.search({
-    index: 'elasticsearch_index_draco_elastic',
-    body,
+    index: 'elasticsearch_index_demo_elastic',
+    body: body
+  }).then((resp) => {
+    const { hits } = resp.hits;
+    const { total } = resp.hits;
+    // Render results in a template.
+    res.render('index', {
+      hits: hits,
+      total: total,
+      aggregations: resp.aggregations.type.buckets,
+      search_string: searchString,
+      search_type: searchType
+    })
+  }, (err) => {
+    console.trace(err.message)
   })
     .then((resp) => {
       const { hits } = resp.hits;
@@ -90,10 +103,26 @@ const doSearch = (req, res) => {
     });
 };
 
+/**
+ * The initial request that loads the form and all the documents in Elasticsearch.
+ *
+ * @param {Object} req
+ *   The request object.
+ * @param {Object} res
+ *   The response object.
+ */
 router.get('/', (req, res) => {
   doSearch(req, res);
 });
 
+/**
+ * Processes form submissions by modifying the query for Elasticsearch.
+ *
+ * @param {Object} req
+ *   The request object.
+ * @param {Object} res
+ *   The response object.
+ */
 router.post('/', (req, res) => {
   doSearch(req, res);
 });

@@ -1,24 +1,27 @@
 extends layout
 
 block content
-    h1 #{title}
+    h1 Node.js Elasticsearch demo
 
     div(id="search_container")
         form(id='search_form' method='GET' action='/')
+            //- This is the search form.
             div(id="search_box")
                 input(type="text" id="search" name="search" value="#{search_string}")
                 input(type="hidden" id="type" name="type" value="#{search_type}")
                 input(type="submit" value="Search")
+            //- Here we iterate the facets. For each item, we show the title and the total results.
             div(id="facets")
                 span Type:
                 ul
+                    //- This is a for loop using Pug's syntax.
                     each aggregation in aggregations
                         li
                             a(href="" class="facet" data-value="#{aggregation.key}") #{aggregation.key} (#{aggregation.doc_count})
-
+    //- Here we render the total results found in Elasticsearch.
     div(id="total")
         h2= 'Found ' + total + ' results'
-
+    //- Finally, we loop and render the title and summary of each result.
     div(id="hits")
         each hit in hits
             h2= hit._source.title
