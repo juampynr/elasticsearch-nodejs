@@ -104,10 +104,26 @@ var doSearch = function (req, res) {
   })
 }
 
+/**
+ * The initial request that loads the form and all the documents in Elasticsearch.
+ *
+ * @param {Object} req
+ *   The request object.
+ * @param {Object} res
+ *   The response object.
+ */
 router.get('/', function (req, res) {
   doSearch(req, res)
 })
 
+/**
+ * Processes form submissions by modifying the query for Elasticsearch.
+ *
+ * @param {Object} req
+ *   The request object.
+ * @param {Object} res
+ *   The response object.
+ */
 router.post('/', function (req, res) {
   doSearch(req, res)
 })
