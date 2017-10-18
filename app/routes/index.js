@@ -86,7 +86,7 @@ var doSearch = function (req, res) {
 
   // Perform the search request.
   client.search({
-    index: 'elasticsearch_index_draco_elastic',
+    index: 'elasticsearch_index_demo_elastic',
     body: body
   }).then(function (resp) {
     var hits = resp.hits.hits

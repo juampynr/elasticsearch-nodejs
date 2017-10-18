@@ -1,5 +1,5 @@
 {
-  "elasticsearch_index_draco_elastic": {
+  "elasticsearch_index_demo_elastic": {
     "mappings": {
       "elastic": {
         "properties": {
