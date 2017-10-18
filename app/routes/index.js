@@ -93,7 +93,6 @@ var doSearch = function (req, res) {
     var total = resp.hits.total
     // Render results in a template.
     res.render('index', {
-      title: 'Node.js Elasticsearch demo',
       hits: hits,
       total: total,
       aggregations: resp.aggregations.type.buckets,
