@@ -7,8 +7,8 @@ block content
         form(id='search_form' method='GET' action='/')
             //- This is the search form.
             div(id="search_box")
-                input(type="text" id="search" name="search" value="#{search_string}")
-                input(type="hidden" id="type" name="type" value="#{search_type}")
+                input(type="text" id="search" name="search" value="#{searchString}")
+                input(type="hidden" id="type" name="type" value="#{searchType}")
                 input(type="submit" value="Search")
             //- Here we iterate the facets. For each item, we show the title and the total results.
             div(id="facets")
