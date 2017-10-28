@@ -1,24 +1,25 @@
 /**
  * Adds behaviors to toggle facets.
  */
-var Anchors = document.getElementsByClassName('facet');
+const Anchors = document.getElementsByClassName('facet');
 
 // Loop facets and add a click listener.
-for (var i = 0; i < Anchors.length ; i++) {
-  Anchors[i].addEventListener('click',
-    function (event) {
+for (let i = 0; i < Anchors.length; i += 1) {
+  Anchors[i].addEventListener(
+    'click',
+    function addListeners(event) {
       event.preventDefault();
-      var value = this.getAttribute('data-value');
+      const value = this.getAttribute('data-value');
       // Either set a hidden field with the facet value or set it to an empty string.
-      var old_value = document.getElementById('type').getAttribute('value');
-      if ((old_value.length === undefined) || (old_value === '')) {
+      const oldValue = document.getElementById('type').getAttribute('value');
+      if ((oldValue.length === undefined) || (oldValue === '')) {
         document.getElementById('type').setAttribute('value', value);
-      }
-      else {
+      } else {
         document.getElementById('type').setAttribute('value', '');
       }
       // Finally, submit the form.
-      document.getElementById("search_form").submit();
+      document.getElementById('search_form').submit();
     },
-    false);
+    false,
+  );
 }
