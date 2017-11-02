@@ -1,6 +1,6 @@
 # Elasticsearch Node.js demo
 
-Implements a search form that queries an Elasticsearch index using Node.js.
+Implements a search form that queries an Elasticsearch index using Node.js. Read the companion article at https://www.lullabot.com/articles/a-nodejs-client-for-elasticsearch.
 
 ## Demo
 
